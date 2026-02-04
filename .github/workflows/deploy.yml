@@ -1,0 +1,35 @@
+name: Build and Deploy Site
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies (site)
+        working-directory: ./site
+        run: |
+          npm ci
+
+      - name: Build (site)
+        working-directory: ./site
+        run: |
+          npm run build
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        with:
+          folder: site/dist
+          branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
