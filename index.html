@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SnackCompany — GitHub Pages Test</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>SnackCompany</h1>
+    <p class="tagline">A tiny test site for GitHub Pages</p>
+  </header>
+  <main>
+    <section>
+      <h2>Welcome</h2>
+      <p>This is a minimal static website to test GitHub Pages deployment.</p>
+      <p>Current time: <span id="time">—</span></p>
+      <p>Once published, your site will be available at: <code>https://&lt;username&gt;.github.io/&lt;repo&gt;/</code></p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 SnackCompany</p>
+  </footer>
+  <script>
+    function updateTime(){ document.getElementById('time').textContent = new Date().toLocaleString(); }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
